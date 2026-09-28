@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="A futuristic AI assistant interface built for next-generation AI applications."
+    />
+
+    <title>Nova — AI Assistant</title>
+
+    <!-- =========================
+         GOOGLE FONTS
+    ========================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- =========================
+         ICONS
+    ========================== -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+
+    <!-- =========================
+         LENIS
+         
+         Optional:
+         You can initialize Lenis later
+         when you add JavaScript.
+    ========================== -->
+
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    -->
+
+    <!-- =========================
+         GSAP
+
+         Optional:
+         Add your own animation JS later.
+    ========================== -->
+
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    -->
+
+    <link rel="stylesheet" href="nova.css" />
+  </head>
+
+  <body>
+    <!-- =========================================================
+         APPLICATION
+    ========================================================== -->
+
+    <div class="app">
+      <!-- =====================================================
+             AMBIENT BACKGROUND
+        ====================================================== -->
+
+      <div class="ambient-background">
+        <div class="ambient-orb orb-one"></div>
+        <div class="ambient-orb orb-two"></div>
+        <div class="ambient-orb orb-three"></div>
+
+        <div class="grid-overlay"></div>
+      </div>
+
+      <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+      <aside class="sidebar" id="sidebar">
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+          <a href="#" class="brand">
+            <div class="brand-mark">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <span class="brand-name"> NOVA </span>
+          </a>
+
+          <button
+            class="icon-button sidebar-toggle"
+            id="sidebarToggle"
+            aria-label="Collapse sidebar"
+          >
+            <i class="ri-sidebar-fold-line"></i>
+          </button>
+        </div>
+
+        <!-- New Chat -->
+
+        <button class="new-chat-button" id="newChatButton">
+          <span class="new-chat-icon">
+            <i class="ri-add-line"></i>
+          </span>
+
+          <span class="new-chat-text"> New conversation </span>
+
+          <span class="shortcut"> ⌘ K </span>
+        </button>
+
+        <!-- Search -->
+
+        <div class="sidebar-search">
+          <i class="ri-search-line"></i>
+
+          <input
+            type="text"
+            id="conversationSearch"
+            placeholder="Search conversations..."
+          />
+
+          <span class="search-shortcut"> / </span>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="sidebar-navigation">
+          <p class="nav-label">Workspace</p>
+
+          <a href="#" class="sidebar-link active">
+            <i class="ri-chat-3-line"></i>
+
+            <span> Conversations </span>
+          </a>
+
+          <a href="#" class="sidebar-link">
+            <i class="ri-folder-3-line"></i>
+
+            <span> Projects </span>
+          </a>
+
+          <a href="#" class="sidebar-link">
+            <i class="ri-star-line"></i>
+
+            <span> Favorites </span>
+          </a>
+
+          <a href="#" class="sidebar-link">
+            <i class="ri-file-text-line"></i>
+
+            <span> Documents </span>
+          </a>
+
+          <p class="nav-label history-label">Recent</p>
+
+          <div class="conversation-list" id="conversationList">
+            <a href="#" class="conversation active">
+              <span class="conversation-icon">
+                <i class="ri-sparkling-2-line"></i>
+              </span>
+
+              <span class="conversation-content">
+                <span class="conversation-title">
+                  Building an AI interface
+                </span>
+
+                <span class="conversation-time"> Just now </span>
+              </span>
+
+              <button class="conversation-menu">
+                <i class="ri-more-2-fill"></i>
+              </button>
+            </a>
+
+            <a href="#" class="conversation">
+              <span class="conversation-icon">
+                <i class="ri-code-s-slash-line"></i>
+              </span>
+
+              <span class="conversation-content">
+                <span class="conversation-title"> React architecture </span>
+
+                <span class="conversation-time"> 2 hours ago </span>
+              </span>
+
+              <button class="conversation-menu">
+                <i class="ri-more-2-fill"></i>
+              </button>
+            </a>
+
+            <a href="#" class="conversation">
+              <span class="conversation-icon">
+                <i class="ri-database-2-line"></i>
+              </span>
+
+              <span class="conversation-content">
+                <span class="conversation-title"> Database design </span>
+
+                <span class="conversation-time"> Yesterday </span>
+              </span>
+
+              <button class="conversation-menu">
+                <i class="ri-more-2-fill"></i>
+              </button>
+            </a>
+
+            <a href="#" class="conversation">
+              <span class="conversation-icon">
+                <i class="ri-lightbulb-line"></i>
+              </span>
+
+              <span class="conversation-content">
+                <span class="conversation-title"> Startup ideas </span>
+
+                <span class="conversation-time"> Yesterday </span>
+              </span>
+
+              <button class="conversation-menu">
+                <i class="ri-more-2-fill"></i>
+              </button>
+            </a>
+
+            <a href="#" class="conversation">
+              <span class="conversation-icon">
+                <i class="ri-book-open-line"></i>
+              </span>
+
+              <span class="conversation-content">
+                <span class="conversation-title"> Learn JavaScript </span>
+
+                <span class="conversation-time"> Sep 26 </span>
+              </span>
+
+              <button class="conversation-menu">
+                <i class="ri-more-2-fill"></i>
+              </button>
+            </a>
+          </div>
+        </nav>
+
+        <!-- Sidebar Bottom -->
+
+        <div class="sidebar-bottom">
+          <!-- Usage -->
+
+          <div class="usage-card">
+            <div class="usage-header">
+              <span> AI Credits </span>
+
+              <span> 72% </span>
+            </div>
+
+            <div class="usage-progress">
+              <span></span>
+            </div>
+
+            <p>7,280 / 10,000 tokens</p>
+          </div>
+
+          <!-- User -->
+
+          <button class="user-profile" id="userProfile">
+            <div class="avatar">AP</div>
+
+            <div class="user-details">
+              <strong> Ashutosh </strong>
+
+              <span> Pro workspace </span>
+            </div>
+
+            <i class="ri-more-2-fill"></i>
+          </button>
+        </div>
+      </aside>
+
+      <!-- =====================================================
+             MAIN APPLICATION
+        ====================================================== -->
+
+      <main class="main">
+        <!-- =================================================
+                 TOP BAR
+            ================================================== -->
+
+        <header class="topbar">
+          <div class="topbar-left">
+            <button
+              class="mobile-menu-button icon-button"
+              id="mobileMenuButton"
+            >
+              <i class="ri-menu-line"></i>
+            </button>
+
+            <!-- Model Selector -->
+
+            <button class="model-selector" id="modelSelector">
+              <span class="model-status"></span>
+
+              <span class="model-name"> Nova Ultra </span>
+
+              <span class="model-version"> 3.1 </span>
+
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+          </div>
+
+          <div class="topbar-right">
+            <button class="topbar-action" aria-label="Share">
+              <i class="ri-share-forward-line"></i>
+
+              <span> Share </span>
+            </button>
+
+            <button class="topbar-action" aria-label="Settings">
+              <i class="ri-settings-3-line"></i>
+            </button>
+
+            <button class="topbar-action" aria-label="More">
+              <i class="ri-more-2-fill"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- =================================================
+                 CHAT AREA
+            ================================================== -->
+
+        <section class="chat-wrapper">
+          <div class="chat-container" id="chatContainer">
+            <!-- =================================================
+                         EMPTY / WELCOME STATE
+                    ================================================== -->
+
+            <section class="welcome-state" id="welcomeState">
+              <!-- AI Orb -->
+
+              <div class="ai-orb-wrapper">
+                <div class="orb-ring ring-one"></div>
+                <div class="orb-ring ring-two"></div>
+                <div class="orb-ring ring-three"></div>
+
+                <div class="ai-orb">
+                  <div class="orb-core"></div>
+
+                  <div class="orb-shine"></div>
+                </div>
+              </div>
+
+              <div class="welcome-copy">
+                <span class="eyebrow"> YOUR INTELLIGENT WORKSPACE </span>
+
+                <h1>
+                  What will we
+                  <span> create </span>
+                  today?
+                </h1>
+
+                <p>
+                  Ask questions, explore ideas, write code, analyze documents,
+                  or build something extraordinary.
+                </p>
+              </div>
+
+              <!-- Suggested Prompts -->
+
+              <div class="suggestion-grid">
+                <button class="suggestion-card">
+                  <span class="suggestion-icon purple">
+                    <i class="ri-code-s-slash-line"></i>
+                  </span>
+
+                  <span class="suggestion-content">
+                    <strong> Build something </strong>
+
+                    <span> Create a modern web application </span>
+                  </span>
+
+                  <i class="ri-arrow-up-right-line suggestion-arrow"></i>
+                </button>
+
+                <button class="suggestion-card">
+                  <span class="suggestion-icon blue">
+                    <i class="ri-lightbulb-flash-line"></i>
+                  </span>
+
+                  <span class="suggestion-content">
+                    <strong> Brainstorm ideas </strong>
+
+                    <span> Explore concepts and possibilities </span>
+                  </span>
+
+                  <i class="ri-arrow-up-right-line suggestion-arrow"></i>
+                </button>
+
+                <button class="suggestion-card">
+                  <span class="suggestion-icon green">
+                    <i class="ri-file-search-line"></i>
+                  </span>
+
+                  <span class="suggestion-content">
+                    <strong> Analyze a document </strong>
+
+                    <span> Extract insights from your files </span>
+                  </span>
+
+                  <i class="ri-arrow-up-right-line suggestion-arrow"></i>
+                </button>
+
+                <button class="suggestion-card">
+                  <span class="suggestion-icon orange">
+                    <i class="ri-graduation-cap-line"></i>
+                  </span>
+
+                  <span class="suggestion-content">
+                    <strong> Learn something </strong>
+
+                    <span> Get a personalized explanation </span>
+                  </span>
+
+                  <i class="ri-arrow-up-right-line suggestion-arrow"></i>
+                </button>
+              </div>
+            </section>
+
+          </div>
+        </section>
+
+        <!-- =================================================
+                 COMPOSER AREA
+            ================================================== -->
+
+        <footer class="composer-area">
+          <div class="composer-container">
+            <!-- Context indicator -->
+
+            <div class="context-bar">
+              <div class="context-info">
+                <span class="context-dot"></span>
+
+                <span> Nova Ultra </span>
+
+                <span class="context-divider"></span>
+
+                <span> 128K context </span>
+              </div>
+
+              <button class="context-button">
+                <i class="ri-equalizer-3-line"></i>
+
+                Controls
+              </button>
+            </div>
+
+            <!-- Composer -->
+
+            <div class="composer" id="composer">
+              <div class="attachment-preview" id="attachmentPreview">
+                <div class="attachment-item">
+                  <div class="attachment-icon">
+                    <i class="ri-file-pdf-2-line"></i>
+                  </div>
+
+                  <div class="attachment-info">
+                    <strong> project-brief.pdf </strong>
+
+                    <span> 2.4 MB </span>
+                  </div>
+
+                  <button class="remove-attachment">
+                    <i class="ri-close-line"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="composer-input-row">
+                <!-- Attachment -->
+
+                <button
+                  class="composer-button"
+                  id="attachmentButton"
+                  aria-label="Attach file"
+                >
+                  <i class="ri-add-line"></i>
+                </button>
+
+                <!-- Text Area -->
+
+                <textarea
+                  id="messageInput"
+                  class="message-input"
+                  rows="1"
+                  placeholder="Message Nova..."
+                ></textarea>
+
+                <!-- Voice -->
+
+                <button
+                  class="composer-button voice-button"
+                  id="voiceButton"
+                  aria-label="Voice input"
+                >
+                  <i class="ri-mic-line"></i>
+                </button>
+
+                <!-- Send -->
+
+                <button
+                  class="send-button"
+                  id="sendButton"
+                  aria-label="Send message"
+                >
+                  <i class="ri-arrow-up-line"></i>
+                </button>
+              </div>
+
+              <div class="composer-footer">
+                <div class="composer-tools">
+                  <button>
+                    <i class="ri-global-line"></i>
+                    Web
+                  </button>
+
+                  <button>
+                    <i class="ri-code-box-line"></i>
+                    Code
+                  </button>
+
+                  <button>
+                    <i class="ri-image-line"></i>
+                    Image
+                  </button>
+                </div>
+
+                <span class="composer-hint">
+                  Enter to send · Shift + Enter for newline
+                </span>
+              </div>
+            </div>
+
+            <p class="disclaimer">
+              Nova can make mistakes. Verify important information.
+            </p>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- =========================================================
+         MOBILE OVERLAY
+    ========================================================== -->
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!--
+        NO APPLICATION JAVASCRIPT HERE.
+
+        When you are ready, create:
+
+        app.js
+
+        and connect:
+
+        #messageInput
+        #sendButton
+        #messages
+        #newChatButton
+        #modelSelector
+        #attachmentButton
+        #voiceButton
+
+        to your AI API.
+    -->
+        <script src="nova.js"></script>
+  </body>
+</html>
